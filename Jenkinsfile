@@ -32,11 +32,11 @@ pipeline {
 					                    makeEmptyDirs: false,
 					                    noDefaultExcludes: false,
 					                    patternSeparator: '[, ]+',
-					                    remoteDirectory: '/tmp/',
+					                    remoteDirectory: '/home/deploy/',
 					                    remoteDirectorySDF: false,
 					                    removePrefix: 'dist/',
 					                    sourceFiles: 'dist/trainSchedule.zip',
-							    execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo systemctl start train-schedule'
+							    execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /home/deploy/trainSchedule.zip -d /opt/train-schedule && sudo systemctl start train-schedule'
 						    )],
 			                            usePromotionTimestamp: false,
 			                            useWorkspaceInPromotion: false,
@@ -72,11 +72,11 @@ pipeline {
 					                    makeEmptyDirs: false,
 					                    noDefaultExcludes: false,
 					                    patternSeparator: '[, ]+',
-					                    remoteDirectory: '/tmp/',
+					                    remoteDirectory: '/home/deploy/',
 					                    remoteDirectorySDF: false,
 					                    removePrefix: 'dist/',
 					                    sourceFiles: 'dist/trainSchedule.zip',
-							    execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo systemctl start train-schedule'
+							    execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /home/deploy/trainSchedule.zip -d /opt/train-schedule && sudo systemctl start train-schedule'
 						    )],
 			                            usePromotionTimestamp: false,
 			                            useWorkspaceInPromotion: false,
