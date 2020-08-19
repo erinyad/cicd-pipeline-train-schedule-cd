@@ -16,6 +16,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
                     sshPublisher(
 	                    failOnError: true,
+			    continueOnError: false,
 	                    publishers: [
 		                    sshPublisherDesc(
 			                    configName: 'staging_server',
@@ -26,7 +27,6 @@ pipeline {
 			                    transfers: [
 				                    sshTransfer(
 					                    excludes: '', 
-					                    execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo systemctl start train-schedule',
 					                    execTimeout: 120000,
 					                    flatten: false,
 					                    makeEmptyDirs: false,
@@ -35,7 +35,9 @@ pipeline {
 					                    remoteDirectory: '/tmp',
 					                    remoteDirectorySDF: false,
 					                    removePrefix: 'dist/',
-					                    sourceFiles: 'dist/trainSchedule.zip')],
+					                    sourceFiles: 'dist/trainSchedule.zip',
+							    execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo systemctl start train-schedule'
+						    )],
 			                            usePromotionTimestamp: false,
 			                            useWorkspaceInPromotion: false,
 			                            verbose: false
@@ -54,6 +56,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
                     sshPublisher(
 	                    failOnError: true,
+			    continueOnError: false,
 	                    publishers: [
 		                    sshPublisherDesc(
 			                    configName: 'staging_server',
@@ -64,7 +67,6 @@ pipeline {
 			                    transfers: [
 				                    sshTransfer(
 					                    excludes: '', 
-					                    execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo systemctl start train-schedule',
 					                    execTimeout: 120000,
 					                    flatten: false,
 					                    makeEmptyDirs: false,
@@ -73,7 +75,9 @@ pipeline {
 					                    remoteDirectory: '/tmp',
 					                    remoteDirectorySDF: false,
 					                    removePrefix: 'dist/',
-					                    sourceFiles: 'dist/trainSchedule.zip')],
+					                    sourceFiles: 'dist/trainSchedule.zip',
+							    execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo systemctl start train-schedule'
+						    )],
 			                            usePromotionTimestamp: false,
 			                            useWorkspaceInPromotion: false,
 			                            verbose: false)])
