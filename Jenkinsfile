@@ -40,7 +40,7 @@ pipeline {
 			                            useWorkspaceInPromotion: false,
 			                            verbose: false
 				    		    )
-			                    ] ))
+			                    ] )
                 }
     }
     stage('DeployToProduction') {
@@ -75,7 +75,7 @@ pipeline {
 					                    sourceFiles: 'dist/trainSchedule.zip')],
 			                            usePromotionTimestamp: false,
 			                            useWorkspaceInPromotion: false,
-			                            verbose: false)]))
+			                            verbose: false)])
                 }
     }
 }
